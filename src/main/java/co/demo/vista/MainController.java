@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package co.demo;
+package co.demo.vista;
 
 import co.demo.modelos.Categoria;
 import co.demo.servicios.CategoriaService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -15,10 +14,10 @@ import org.springframework.stereotype.Controller;
  * @author usuario
  */
 @Controller
-public class MainController extends javax.swing.JFrame {
-
-    @Autowired
+public class MainController extends javax.swing.JInternalFrame {
+ 
     private final CategoriaService cs;
+
     public MainController(CategoriaService categoriaService) {
         this.cs = categoriaService;
         initComponents();
