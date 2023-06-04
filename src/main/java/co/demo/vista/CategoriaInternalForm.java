@@ -16,14 +16,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class CategoriaInternalForm extends javax.swing.JInternalFrame {
-    private int contador=0;
+  
     @Autowired
     private final CategoriaService cs;
 
     public CategoriaInternalForm(CategoriaService categoriaService) {
         this.cs = categoriaService;
         initComponents();
-        contador++;
+        
     }
 
     /**
@@ -120,12 +120,5 @@ public class CategoriaInternalForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTest;
     // End of variables declaration//GEN-END:variables
 
-    public int getContador() {
-        return contador;
-    }
 
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-  
 }

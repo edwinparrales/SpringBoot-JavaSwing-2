@@ -21,4 +21,9 @@ public class ProductoService {
        return pr.findAll();
     }
     
+     public  List<Producto> buscarDescripcion(String descripcion){
+    
+       return pr.findByDescripcionLike("%"+descripcion+"%");
+    }
+    
 }

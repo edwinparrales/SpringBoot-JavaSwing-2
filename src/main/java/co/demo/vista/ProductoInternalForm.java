@@ -16,13 +16,13 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ProductoInternalForm extends javax.swing.JInternalFrame {
-    private int contador = 0;
+  
     @Autowired
     private ProductoService ps;
     public ProductoInternalForm(ProductoService productoService) {
         this.ps = productoService;
         initComponents();
-        contador++;
+      
     }
 
     /**
@@ -88,13 +88,4 @@ public class ProductoInternalForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnListarProductos;
     // End of variables declaration//GEN-END:variables
 
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-
-  
 }
