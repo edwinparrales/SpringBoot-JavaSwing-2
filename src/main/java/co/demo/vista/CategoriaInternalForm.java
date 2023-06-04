@@ -7,6 +7,7 @@ package co.demo.vista;
 import co.demo.modelos.Categoria;
 import co.demo.servicios.CategoriaService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -14,13 +15,15 @@ import org.springframework.stereotype.Controller;
  * @author usuario
  */
 @Controller
-public class MainController extends javax.swing.JInternalFrame {
- 
+public class CategoriaInternalForm extends javax.swing.JInternalFrame {
+    private int contador=0;
+    @Autowired
     private final CategoriaService cs;
 
-    public MainController(CategoriaService categoriaService) {
+    public CategoriaInternalForm(CategoriaService categoriaService) {
         this.cs = categoriaService;
         initComponents();
+        contador++;
     }
 
     /**
@@ -34,7 +37,11 @@ public class MainController extends javax.swing.JInternalFrame {
 
         btnTest = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         btnTest.setText("Test");
         btnTest.addActionListener(new java.awt.event.ActionListener() {
@@ -112,4 +119,13 @@ public class MainController extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTest;
     // End of variables declaration//GEN-END:variables
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+  
 }

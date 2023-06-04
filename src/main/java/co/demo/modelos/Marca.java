@@ -20,12 +20,13 @@ import jakarta.persistence.Table;
  * @author usuario
  */
 @Entity
-@Table(name = "categorias")
+@Table(name = "marcas")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.findById", query = "SELECT c FROM Categoria c WHERE c.id = :id"),
-    @NamedQuery(name = "Categoria.findByNombre", query = "SELECT c FROM Categoria c WHERE c.nombre = :nombre")})
-public class Categoria implements Serializable {
+    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m"),
+    @NamedQuery(name = "Marca.findById", query = "SELECT m FROM Marca m WHERE m.id = :id"),
+    @NamedQuery(name = "Marca.findByCodigo", query = "SELECT m FROM Marca m WHERE m.codigo = :codigo"),
+    @NamedQuery(name = "Marca.findByNombre", query = "SELECT m FROM Marca m WHERE m.nombre = :nombre")})
+public class Marca implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,18 +35,22 @@ public class Categoria implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "codigo")
+    private String codigo;
+    @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
 
-    public Categoria() {
+    public Marca() {
     }
 
-    public Categoria(Integer id) {
+    public Marca(Integer id) {
         this.id = id;
     }
 
-    public Categoria(Integer id, String nombre) {
+    public Marca(Integer id, String codigo, String nombre) {
         this.id = id;
+        this.codigo = codigo;
         this.nombre = nombre;
     }
 
@@ -55,6 +60,14 @@ public class Categoria implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -75,10 +88,10 @@ public class Categoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Categoria)) {
+        if (!(object instanceof Marca)) {
             return false;
         }
-        Categoria other = (Categoria) object;
+        Marca other = (Marca) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -87,7 +100,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return "co.demo.modelos.Categoria[ id=" + id + " ]";
+        return "co.demo.modelos.Marca[ id=" + id + " ]";
     }
     
 }

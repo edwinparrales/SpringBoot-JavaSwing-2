@@ -1,23 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
- */
 package co.demo.vista;
 
 import co.demo.servicios.CategoriaService;
+import co.demo.servicios.ProductoService;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MainMDI extends javax.swing.JFrame {
     @Autowired
-    private final CategoriaService cs;
+    private CategoriaService categoriaService;
+    
+    @Autowired
+    private  ProductoService  productoService;
     private final Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     private final Dimension dimensionMin = new Dimension(800, 600);
 
-    public MainMDI(CategoriaService categoriaService) {
-        this.cs = categoriaService;
+    public MainMDI( ) {
+      
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -74,6 +76,11 @@ public class MainMDI extends javax.swing.JFrame {
 
         MenuItemCrearProducto.setMnemonic('o');
         MenuItemCrearProducto.setText("CrearProducto");
+        MenuItemCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemCrearProductoActionPerformed(evt);
+            }
+        });
         MenuProductos.add(MenuItemCrearProducto);
 
         MenuItemCategorias.setMnemonic('s');
@@ -157,10 +164,20 @@ public class MainMDI extends javax.swing.JFrame {
 
     private void MenuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCategoriasActionPerformed
         // TODO add your handling code here:
-        MainController mc = new MainController(cs);
-        mc.setVisible(true);
-        panelMain.add(mc);
+       CategoriaInternalForm categoriaInternalForm = new CategoriaInternalForm(categoriaService);
+        categoriaInternalForm.setVisible(true);
+        panelMain.add(categoriaInternalForm);
+     
+      
     }//GEN-LAST:event_MenuItemCategoriasActionPerformed
+
+    private void MenuItemCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCrearProductoActionPerformed
+        // TODO add your handling code here:
+       
+       ProductoInternalForm productoInternalForm = new ProductoInternalForm(productoService);
+        productoInternalForm.setVisible(true);
+       panelMain.add(productoInternalForm);
+    }//GEN-LAST:event_MenuItemCrearProductoActionPerformed
 
     /**
      * @param args the command line arguments
